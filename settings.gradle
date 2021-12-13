@@ -1,0 +1,5 @@
+rootProject.name = 'sample-vulnerable-log4j-indirect-app'
+include('app')
+
+include ':lib'
+project(':lib').projectDir = file('../sample-vulnerable-log4j-direct-lib/lib')
