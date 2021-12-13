@@ -1,5 +1,9 @@
+sourceControl {
+    gitRepository('https://github.com/sgtest/sample-vulnerable-log4j-direct-lib.git') {
+        producesModule('sample-vulnerable-log4j-direct-lib:lib')
+    }
+}
+
 rootProject.name = 'sample-vulnerable-log4j-indirect-app'
 include('app')
 
-include ':lib'
-project(':lib').projectDir = file('../sample-vulnerable-log4j-direct-lib/lib')
