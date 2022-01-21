@@ -18,3 +18,13 @@ dependencies {
 application {
     mainClass = 'sample.vulnerable.log4j.indirect.app.App'
 }
+
+// Force usage of log4j dependencies that are not vulnerable to CVE-2021-44228. #upgrade-log4j-gradle-cve-2021-44228
+configurations.all {
+  resolutionStrategy.eachDependency { details ->
+    if (details.target.group == 'org.apache.logging.log4j' && details.target.version < '2.17.0') {
+      details.useVersion '2.17.0'
+      details.because 'CVE-2021-44228'
+    }
+  }
+}
